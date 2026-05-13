@@ -26,8 +26,9 @@ export const resume = {
   ],
   education: [
     {
-      degree: "Bachelor of Science — Computer Science",
-      school: "University in Pakistan",
+      degree: "BS in Computer Science",
+      school:
+        "FAST National University of Computer and Emerging Sciences (NUCES)",
       period: "Graduated",
       bullets: [
         "Specialization in software engineering, AI, and cybersecurity.",
