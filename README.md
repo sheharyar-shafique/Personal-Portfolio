@@ -20,14 +20,42 @@ Open http://localhost:3000
 5. **Add real testimonials.** Edit `data/testimonials.ts`. When a client submits a review through the form, you get the email — vet it, then paste it here and redeploy. This keeps spam off your live site.
 6. **(Optional) update resume content.** Edit `data/resume.ts` — I've prefilled it from what you told me.
 
-## Deploy free to Vercel
+## Deploy to Vercel
+
+This repo is Vercel-ready (`vercel.json` is included with the framework, build commands, and security headers preconfigured).
+
+### Easiest — connect the GitHub repo (recommended)
+
+1. Go to https://vercel.com/new
+2. Click **Import Git Repository** and select `Personal-Portfolio`
+3. Vercel auto-detects Next.js — just click **Deploy**
+4. Once deployed, go to **Project Settings → Environment Variables** and add:
+   - `NEXT_PUBLIC_WEB3FORMS_KEY` = *your key from https://web3forms.com*
+   - Apply to: Production, Preview, Development
+5. Redeploy from the **Deployments** tab so the env var takes effect
+
+After this, every `git push` to `main` auto-deploys.
+
+### Or via CLI
 
 ```bash
 npm i -g vercel
-vercel
+cd "C:\Users\user\Documents\My personal Portfolio"
+vercel              # first run — links the project, follow prompts
+vercel --prod       # deploy to production
 ```
 
-Add `NEXT_PUBLIC_WEB3FORMS_KEY` in the Vercel dashboard under Project Settings → Environment Variables.
+To set the env var via CLI:
+
+```bash
+vercel env add NEXT_PUBLIC_WEB3FORMS_KEY production
+```
+
+### Deployment notes
+
+- **Region:** `iad1` (Washington D.C.) — change in `vercel.json` if you want closer to Pakistan: try `bom1` (Mumbai) or `fra1` (Frankfurt).
+- **Custom domain:** Project Settings → Domains. Free Vercel subdomain works out of the box.
+- **Node version:** pinned to `>=18.18.0` in `package.json`.
 
 ## Project structure
 
