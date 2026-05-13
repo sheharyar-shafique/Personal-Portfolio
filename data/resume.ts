@@ -3,6 +3,17 @@ export const resume = {
     "AI Developer and Full-Stack Engineer with 3+ years of experience building production-grade web, mobile, and AI products. Strong across the entire stack — from React/Next.js interfaces to FastAPI/Node backends, PostgreSQL data layers, and OpenAI-powered intelligent systems. Detail-oriented, ship-focused, and comfortable owning projects end to end.",
   experience: [
     {
+      role: "Senior AI Developer",
+      company: "Sovanza · Lahore, Pakistan",
+      period: "2024 — 2025",
+      bullets: [
+        "Led AI engineering on production products — LLM-powered assistants, RAG pipelines, and intelligent automation systems.",
+        "Owned end-to-end delivery: architecture, prompt engineering, evaluation, and deployment to production.",
+        "Mentored junior engineers on AI best practices, prompt design, and shipping reliable model-backed features.",
+        "Integrated OpenAI, LangChain, and vector databases into customer-facing apps with strict cost and latency budgets.",
+      ],
+    },
+    {
       role: "Freelance Full-Stack & AI Developer",
       company: "Self-employed",
       period: "2023 — Present",
