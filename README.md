@@ -51,11 +51,48 @@ To set the env var via CLI:
 vercel env add NEXT_PUBLIC_WEB3FORMS_KEY production
 ```
 
-### Deployment notes
+### Vercel deployment notes
 
 - **Region:** `iad1` (Washington D.C.) — change in `vercel.json` if you want closer to Pakistan: try `bom1` (Mumbai) or `fra1` (Frankfurt).
 - **Custom domain:** Project Settings → Domains. Free Vercel subdomain works out of the box.
 - **Node version:** pinned to `>=18.18.0` in `package.json`.
+
+## Deploy to Netlify
+
+This repo is also Netlify-ready (`netlify.toml` is included with the Next.js runtime plugin, security headers, and asset caching).
+
+### Easiest — connect the GitHub repo
+
+1. Go to https://app.netlify.com/start
+2. Click **Import from Git** → **GitHub** → select `Personal-Portfolio`
+3. Netlify auto-reads `netlify.toml` — build command, publish dir, and Next.js plugin are all pre-set. Just click **Deploy**.
+4. Once deployed, go to **Site settings → Environment variables** and add:
+   - `NEXT_PUBLIC_WEB3FORMS_KEY` = *your key from https://web3forms.com*
+5. Trigger a redeploy from the **Deploys** tab so the env var picks up
+
+After this, every `git push` to `main` auto-deploys.
+
+### Or via Netlify CLI
+
+```bash
+npm i -g netlify-cli
+cd "C:\Users\user\Documents\My personal Portfolio"
+netlify login
+netlify init          # links the repo to a Netlify site
+netlify deploy --prod # deploy to production
+```
+
+Add the env var via CLI:
+
+```bash
+netlify env:set NEXT_PUBLIC_WEB3FORMS_KEY your-key-here
+```
+
+### Netlify deployment notes
+
+- **Plugin:** `@netlify/plugin-nextjs` is auto-installed by Netlify (no need to add to `package.json`).
+- **Node version:** pinned to `20` in `netlify.toml`.
+- **Custom domain:** Site settings → Domains. Free `*.netlify.app` subdomain works out of the box.
 
 ## Project structure
 

@@ -1,0 +1,54 @@
+# Netlify configuration for Next.js deployment.
+# Docs: https://docs.netlify.com/frameworks/next-js/
+
+[build]
+  command = "next build"
+  publish = ".next"
+
+# The Next.js Runtime plugin handles SSR, ISR, image optimization,
+# and edge middleware. Netlify auto-installs it when this is declared.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_FLAGS = "--legacy-peer-deps=false"
+
+# Security headers on every response.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    X-DNS-Prefetch-Control = "on"
+
+# Immutable cache for Next.js static assets.
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Cache for public static files (images, fonts).
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Deploy previews for every pull request.
+[context.deploy-preview]
+  command = "next build"
+
+[context.branch-deploy]
+  command = "next build"
