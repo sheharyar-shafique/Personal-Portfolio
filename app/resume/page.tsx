@@ -41,43 +41,66 @@ export default function ResumePage() {
       {/* Resume sheet */}
       <article className="print-page mx-auto max-w-3xl rounded-2xl border border-white/10 bg-ink-900 px-8 py-10 shadow-2xl shadow-black/40 md:px-12 md:py-14">
         {/* Header */}
-        <header className="mb-8 flex flex-col gap-4 border-b border-white/10 pb-7 md:flex-row md:items-end md:justify-between">
-          <div>
-            <h1 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
-              {profile.name}
-            </h1>
-            <p className="mt-1.5 text-sm font-medium uppercase tracking-[0.2em] text-brand-cyan">
-              {profile.roles[0]} · {profile.roles[1]}
-            </p>
+        <header className="mb-8 border-b border-white/10 pb-7">
+          {/* Profile photo + name row */}
+          <div className="flex flex-col items-center gap-6 md:flex-row md:items-start">
+            {/* Profile photo */}
+            <div className="no-print relative shrink-0">
+              {/* Glow behind photo */}
+              <div className="absolute -inset-3 rounded-full bg-gradient-to-br from-brand-violet/40 to-brand-cyan/40 blur-xl opacity-60" />
+              {/* Gradient ring */}
+              <div className="relative h-28 w-28 rounded-full bg-gradient-to-br from-brand-violet via-fuchsia-500 to-brand-cyan p-[3px] shadow-2xl shadow-brand-violet/20">
+                <div className="h-full w-full overflow-hidden rounded-full bg-ink-950">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/profile.jpg"
+                    alt={profile.name}
+                    className="h-full w-full object-cover object-top brightness-90 contrast-105 saturate-[0.85]"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Name + contact */}
+            <div className="flex flex-1 flex-col gap-4 text-center md:flex-row md:items-end md:justify-between md:text-left">
+              <div>
+                <h1 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
+                  {profile.name}
+                </h1>
+                <p className="mt-1.5 text-sm font-medium uppercase tracking-[0.2em] text-brand-cyan">
+                  {profile.roles[0]} · {profile.roles[1]}
+                </p>
+              </div>
+              <ul className="space-y-1.5 text-xs text-zinc-400 md:text-right">
+                <li className="flex items-center gap-2 justify-center md:justify-end">
+                  <Mail size={12} className="text-brand-cyan" />
+                  <a href={`mailto:${profile.email}`}>{profile.email}</a>
+                </li>
+                <li className="flex items-center gap-2 justify-center md:justify-end">
+                  <Phone size={12} className="text-brand-cyan" />
+                  {profile.phone}
+                </li>
+                <li className="flex items-center gap-2 justify-center md:justify-end">
+                  <MessageCircle size={12} className="text-brand-cyan" />
+                  WhatsApp: {profile.phone}
+                </li>
+                <li className="flex items-center gap-2 justify-center md:justify-end">
+                  <Linkedin size={12} className="text-brand-cyan" />
+                  <a
+                    href={profile.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    LinkedIn
+                  </a>
+                </li>
+                <li className="flex items-center gap-2 justify-center md:justify-end">
+                  <MapPin size={12} className="text-brand-cyan" />
+                  {profile.location}
+                </li>
+              </ul>
+            </div>
           </div>
-          <ul className="space-y-1.5 text-xs text-zinc-400 md:text-right">
-            <li className="flex items-center gap-2 md:justify-end">
-              <Mail size={12} className="text-brand-cyan" />
-              <a href={`mailto:${profile.email}`}>{profile.email}</a>
-            </li>
-            <li className="flex items-center gap-2 md:justify-end">
-              <Phone size={12} className="text-brand-cyan" />
-              {profile.phone}
-            </li>
-            <li className="flex items-center gap-2 md:justify-end">
-              <MessageCircle size={12} className="text-brand-cyan" />
-              WhatsApp: {profile.phone}
-            </li>
-            <li className="flex items-center gap-2 md:justify-end">
-              <Linkedin size={12} className="text-brand-cyan" />
-              <a
-                href={profile.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                LinkedIn
-              </a>
-            </li>
-            <li className="flex items-center gap-2 md:justify-end">
-              <MapPin size={12} className="text-brand-cyan" />
-              {profile.location}
-            </li>
-          </ul>
         </header>
 
         {/* Summary */}

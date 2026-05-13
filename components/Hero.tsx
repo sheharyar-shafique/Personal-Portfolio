@@ -120,12 +120,15 @@ export default function Hero() {
               <div className="absolute -inset-6 rounded-[2.2rem] bg-gradient-to-br from-brand-violet/40 via-fuchsia-500/30 to-brand-cyan/40 blur-2xl opacity-70" />
 
               {/* Frame */}
-              <div className="glow-border relative h-[420px] w-[320px] overflow-hidden rounded-[2rem] bg-ink-900 ring-1 ring-white/10 md:h-[480px] md:w-[360px]">
+              <div className="glow-border relative h-[420px] w-[320px] overflow-hidden rounded-[2rem] bg-ink-950 ring-1 ring-white/10 md:h-[480px] md:w-[360px]">
                 {/* Portrait image with fallback */}
                 <PortraitWithFallback />
 
-                {/* Gradient veil */}
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-950/85 via-ink-950/10 to-transparent" />
+                {/* Gradient veil — multi-layer for seamless dark blending */}
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/40 to-ink-950/60" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-ink-950/80 via-transparent to-transparent" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink-950/50 via-transparent to-ink-950/50" />
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_30%,_#050507_85%)]" />
 
                 {/* Bottom card */}
                 <div className="absolute inset-x-4 bottom-4 rounded-2xl border border-white/10 bg-ink-950/70 p-4 backdrop-blur-xl">
@@ -217,7 +220,7 @@ function PortraitWithFallback() {
       src="/profile.jpg"
       alt="Muhammad Sheharyar Shafique"
       onError={() => setErrored(true)}
-      className="absolute inset-0 h-full w-full object-cover"
+      className="absolute inset-0 h-full w-full object-cover object-top brightness-90 contrast-105 saturate-[0.85]"
     />
   );
 }
